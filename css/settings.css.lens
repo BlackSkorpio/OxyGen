@@ -8,6 +8,19 @@
 @import url("css/misc.css");
 /* Make a Donation box 
 -----------------------------------------------------*/
+
+.album-exif {
+	display: block !important;
+}
+
+p.album-exif {
+	padding: 0 0 0 45px !important;
+}
+
+h3.album-exif {
+	padding: 40px 0 0 40px !important;
+}
+
 .show_hide {
 	display:none;
 }
@@ -612,7 +625,7 @@ main {
     font-size: 1em;
     color:#999;
     line-height:1.5em;
-    position:absolute;
+    position:relative;
     bottom:0;
 }
 

@@ -15,7 +15,37 @@
         <koken:link title="View {{ content.title | content.filename }}" lightbox="{{ settings.use_lightbox }}">
           <koken:img size="{{ settings.grid_asp_ratio }}" class="preview" lazy="true" alt="{{ content.title | content.filename }}"/>
 		  <koken:if data="settings.hide_title_overlay" equals="true">
-			<div><h3>{{ content.title | content.filename }}</h3></div>
+			<koken:if true="settings.show_exif">
+				<div class="album-exif">
+					<h3 class="album-exif">{{ content.title | content.filename }}</h3>
+						<p class="album-exif">
+							<koken:exif>
+		  					<koken:not empty="exif.model">
+		    					<strong>Camera:</strong>&nbsp;{{ exif.make }}&nbsp;{{ exif.model }}
+		  					</koken:not>
+		  					<koken:not empty="exif.exposure">
+		    					<br><strong>Exposure:</strong>&nbsp;{{ exif.exposure }}
+		  					</koken:not>
+		  					<koken:not empty="exif.aperture">
+		    					<br><strong>Aperture:</strong>&nbsp;{{ exif.aperture }}
+		  					</koken:not>
+		  					<koken:not empty="exif.iso_speed_ratings">
+		    					<br><strong>ISO:</strong>&nbsp;{{ exif.iso_speed_ratings }}
+		  					</koken:not>
+		  					<koken:not empty="exif.focal_length">
+		    					<br><strong>Focal Length:</strong>&nbsp;{{ exif.focal_length }}
+		  					</koken:not>
+		  					<koken:not empty="exif.lens">
+		    					<br><strong>Lens:</strong>&nbsp;{{ exif.lens }}
+		  					</koken:not>
+							</koken:exif>
+						</p>
+			</koken:if>
+			<koken:if false="settings.show_exif">
+				<div class="album-no_exif">
+					<h3>{{ content.title | content.filename }}</h3>
+			</koken:if>
+				</div>
 		  </koken:if>
         </koken:link>
       </li>
